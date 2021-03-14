@@ -130,7 +130,7 @@ void main() async {
     });
 
     testWidgets(
-        '6. パスワードを入力し、パスワード表示アイコンを押したとき、入力した文言のマスクが解除されていること。もう一度パスワードマスクアイコンを押したとき、パスワードがマスクされること',
+        '7. パスワードを入力し、パスワード表示アイコンを押したとき、入力した文言のマスクが解除されていること。もう一度パスワードマスクアイコンを押したとき、パスワードがマスクされること',
         (tester) async {
       await tester.pumpWidget(loginApp());
       await tester.enterText(_password, 'hoge');
@@ -151,7 +151,7 @@ void main() async {
     });
   });
 
-  testWidgets('7. ユーザID、及びパスワードを入力しログインボタンを押し、認証エラーが発生したとき、パスワード誤り文言が表示されること',
+  testWidgets('8. ユーザID、及びパスワードを入力しログインボタンを押し、認証エラーが発生したとき、パスワード誤り文言が表示されること',
       (tester) async {
     await tester.pumpWidget(loginApp());
     when(mockAuthRepository.auth())
