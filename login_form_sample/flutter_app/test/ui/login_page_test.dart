@@ -72,7 +72,6 @@ void main() async {
 
       final validationErrorMessages = find.text('入力してください');
       expect(validationErrorMessages, findsOneWidget);
-      expect(validationErrorMessages.evaluate().length, 1);
     });
 
     testWidgets('4. パスワードを入力せずにログインボタンを押したとき、入力チェックが動作し、エラーとなること',
@@ -86,7 +85,6 @@ void main() async {
 
       final validationErrorMessages = find.text('入力してください');
       expect(validationErrorMessages, findsOneWidget);
-      expect(validationErrorMessages.evaluate().length, 1);
     });
 
     testWidgets('5. ユーザID、及びパスワードを入力せずにログインボタンを押したとき、入力チェックが動作し、エラーとなること',
@@ -97,9 +95,7 @@ void main() async {
       await tester.pump();
 
       final validationErrorMessages = find.text('入力してください');
-      expect(validationErrorMessages.at(0), findsOneWidget);
-      expect(validationErrorMessages.at(1), findsOneWidget);
-      expect(validationErrorMessages.evaluate().length, 2);
+      expect(validationErrorMessages, findsNWidgets(2));
     });
 
     testWidgets('5. ユーザID、及びパスワードを入力しログインボタンを押したとき、入力チェックが動作し、エラーとならないこと',
