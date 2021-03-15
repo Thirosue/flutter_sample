@@ -17,13 +17,10 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - run: pwd    
-      - run: cd login_form_sample/flutter_app
-      - run: flutter pub get
-      # - run: flutter analyze
-      - run: flutter test --no-sound-null-safety --verbose --coverage --coverage-path=~/coverage/lcov.info
-      - run: cd ~
+      - run: cd login_form_sample/flutter_app && flutter pub get
       - run: pwd
+      # - run: flutter analyze
+      - run: cd login_form_sample/flutter_app && flutter test --no-sound-null-safety --verbose --coverage --coverage-path=~/coverage/lcov.info
       - uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{secrets.CODECOV_TOKEN}}
