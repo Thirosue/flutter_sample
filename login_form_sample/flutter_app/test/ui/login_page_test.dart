@@ -75,6 +75,7 @@ void main() async {
 
       final validationErrorMessages = find.text('入力してください');
       expect(validationErrorMessages, findsOneWidget);
+      verifyNever(mockAuthRepository.auth());
     });
 
     testWidgets('4. パスワードを入力せずにログインボタンを押したとき、入力チェックが動作し、エラーとなること',
@@ -88,6 +89,7 @@ void main() async {
 
       final validationErrorMessages = find.text('入力してください');
       expect(validationErrorMessages, findsOneWidget);
+      verifyNever(mockAuthRepository.auth());
     });
 
     testWidgets('5. ユーザID、及びパスワードを入力せずにログインボタンを押したとき、入力チェックが動作し、エラーとなること',
@@ -99,6 +101,7 @@ void main() async {
 
       final validationErrorMessages = find.text('入力してください');
       expect(validationErrorMessages, findsNWidgets(2));
+      verifyNever(mockAuthRepository.auth());
     });
 
     testWidgets('5. ユーザID、及びパスワードを入力しログインボタンを押したとき、入力チェックが動作し、エラーとならないこと',
@@ -115,6 +118,7 @@ void main() async {
 
       expect(find.text('入力してください'), findsNothing);
       expect(find.text('パスワードが誤っています'), findsNothing);
+      verify(mockAuthRepository.auth()).called(1);
     });
 
     testWidgets('6. パスワードを入力したとき、入力した文言がマスク(••••)されていること', (tester) async {
@@ -162,6 +166,7 @@ void main() async {
       await tester.pump(Duration(seconds: 1));
 
       expect(find.text('パスワードが誤っています'), findsOneWidget);
+      verify(mockAuthRepository.auth()).called(1);
     });
   });
 }
