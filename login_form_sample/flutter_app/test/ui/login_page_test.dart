@@ -108,7 +108,7 @@ void main() async {
       await tester.enterText(_id, 'demo');
 
       await tester.tap(_submitButton);
-      await tester.pump(Duration(seconds: 10)); // SnackBarが表示されるのを待ち合わせる
+      await tester.pump(Duration(seconds: 1)); // SnackBarが表示されるのを待ち合わせる
 
       expect(find.text('入力してください'), findsNothing);
       expect(find.text('パスワードが誤っています'), findsNothing);
