@@ -20,7 +20,7 @@ jobs:
       - run: pwd    
       - run: cd login_form_sample/flutter_app
       - run: flutter pub get
-      - run: flutter analyze
+      # - run: flutter analyze
       - run: flutter test --no-sound-null-safety --verbose --coverage --coverage-path=~/coverage/lcov.info
       - run: cd ~
       - run: pwd
