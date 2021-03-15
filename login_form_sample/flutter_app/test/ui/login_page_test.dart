@@ -145,20 +145,20 @@ void main() async {
       print('Mask: $editTextAfter');
       expect(editTextAfter.substring(editText.length - 1), '\u2022');
     });
-  });
 
-  testWidgets('8. ユーザID、及びパスワードを入力しログインボタンを押し、認証エラーが発生したとき、パスワード誤り文言が表示されること',
-      (tester) async {
-    await tester.pumpWidget(loginApp());
-    when(mockAuthRepository.auth())
-        .thenAnswer((_) => Future.value(false)); // 認証NG
+    testWidgets('8. ユーザID、及びパスワードを入力しログインボタンを押し、認証エラーが発生したとき、パスワード誤り文言が表示されること',
+        (tester) async {
+      await tester.pumpWidget(loginApp());
+      when(mockAuthRepository.auth())
+          .thenAnswer((_) => Future.value(false)); // 認証NG
 
-    await tester.enterText(_password, 'password');
-    await tester.enterText(_id, 'demo');
+      await tester.enterText(_password, 'password');
+      await tester.enterText(_id, 'demo');
 
-    await tester.tap(_submitButton);
-    await tester.pump(Duration(seconds: 1));
+      await tester.tap(_submitButton);
+      await tester.pump(Duration(seconds: 1));
 
-    expect(find.text('パスワードが誤っています'), findsOneWidget);
+      expect(find.text('パスワードが誤っています'), findsOneWidget);
+    });
   });
 }
