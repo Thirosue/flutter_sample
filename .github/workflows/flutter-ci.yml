@@ -1,0 +1,30 @@
+name: flutter_analyze_and_test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: login_form_sample test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - run: pwd    
+      - run: cd login_form_sample/flutter_app
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test --no-sound-null-safety --verbose --coverage --coverage-path=~/coverage/lcov.info
+      - run: cd ~
+      - run: pwd
+      - uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
+          file: ~/coverage/lcov.info
