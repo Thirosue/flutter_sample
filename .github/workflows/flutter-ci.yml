@@ -16,8 +16,8 @@ jobs:
           channel: 'stable'
       - run: cd login_form_sample/flutter_app && flutter pub get
       # - run: flutter analyze
-      - run: cd login_form_sample/flutter_app && flutter test --no-sound-null-safety --coverage
+      - run: cd login_form_sample/flutter_app && flutter test --no-sound-null-safety --coverage --coverage-path=~/coverage/lcov.info
       - uses: codecov/codecov-action@v1
         with:
           token: ${{secrets.CODECOV_TOKEN}}
-          file: $pwd/login_form_sample/flutter_app/coverage/lcov.info
+          file: --coverage-path=~/coverage/lcov.info
