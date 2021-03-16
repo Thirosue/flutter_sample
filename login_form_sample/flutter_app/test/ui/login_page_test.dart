@@ -30,9 +30,6 @@ class MockAuthRepository extends Mock implements AuthRepository {}
 
 void main() async {
   final mockAuthRepository = MockAuthRepository();
-  when(mockAuthRepository.auth()).thenThrow(
-    Exception('api error occurred'),
-  );
 
   MaterialApp loginApp() {
     return MaterialApp(
